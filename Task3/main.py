@@ -1,6 +1,13 @@
+import sys
+
 import matrix.functions as matrix
 
 if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        matrix.eigenvalues_accuracy = float(sys.argv[1])
+        matrix.optimal_accuracy = float(sys.argv[2])
+        matrix.seidel_accuracy = float(sys.argv[3])
+
     a_matrix, b_vector = matrix.get_input()
 
     eigenvalues = matrix.get_eigenvalues(a_matrix)
