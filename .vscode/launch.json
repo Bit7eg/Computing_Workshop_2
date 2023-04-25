@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Task1 Debug",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}\\Task1",
+            "python": "${workspaceFolder}\\Task1\\venv\\Scripts\\python.exe",
+            "program": "${workspaceFolder}\\Task1\\main.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: Task2 Debug",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}\\Task2",
+            "python": "${workspaceFolder}\\Task2\\venv\\Scripts\\python.exe",
+            "program": "${workspaceFolder}\\Task2\\main.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: Task3 Debug",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}\\Task3",
+            "python": "${workspaceFolder}\\Task3\\venv\\Scripts\\python.exe",
+            "program": "${workspaceFolder}\\Task3\\main.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
