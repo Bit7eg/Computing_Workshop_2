@@ -13,17 +13,17 @@ if __name__ == '__main__':
     eigenvalues = matrix.get_eigenvalues(a_matrix)
     print("Eigenvalues:", end=" ")
     for i in eigenvalues:
-        print("{0:.6}".format(i), end=" ")
+        print("{0:.15}".format(i), end="\n")
     print()
 
     x = matrix.solve_system_optimal(a_matrix, b_vector)
     print("Optimal roots:", end=" ")
     for i in x:
-        print("{0:.6}".format(i), end=" ")
+        print("{0:.10}".format(i), end=" ")
     print()
 
     x = matrix.solve_system_Seidel(a_matrix, b_vector)
     print("Seidel roots:", end=" ")
     for i in x:
-        print("{0:.6}".format(i), end=" ")
+        print("{0:.10}".format(i), end=" ")
     print()

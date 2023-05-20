@@ -1,8 +1,8 @@
 import numpy as np
 
-eigenvalues_accuracy = 0.001
-seidel_accuracy = 0.001
-optimal_accuracy = 0.001
+eigenvalues_accuracy = 1.0e-6
+seidel_accuracy = 1.0e-6
+optimal_accuracy = 1.0e-6
 
 def vector_norm(vector):
     return np.sqrt(sum([i*i for i in vector]))
@@ -34,7 +34,7 @@ def get_eigenvalues(matrix):
             for j in range(n):
                 if (i != j) and (np.abs(a[i][j]) > np.abs(a[i][max_index])):
                     max_index = j
-            tau = (a[i][i] - a[max_index][max_index])/a[i][max_index]
+            tau = (a[i][i] - a[max_index][max_index])/(2*a[i][max_index])
             if tau > 0: t = 1.0/(tau + np.sqrt(tau*tau + 1))
             elif tau < 0: t = 1.0/(tau - np.sqrt(tau*tau + 1))
             else: t = 1.0
@@ -55,8 +55,8 @@ def get_eigenvalues(matrix):
 def solve_system_optimal(a_matrix, b_vector):
     n = len(b_vector)
     eigenvalues = get_eigenvalues(a_matrix)
-    max_eigen = max(eigenvalues) + 2*eigenvalues_accuracy
-    min_eigen = min(eigenvalues) - 2*eigenvalues_accuracy
+    max_eigen = max(eigenvalues) + eigenvalues_accuracy
+    min_eigen = min(eigenvalues) - eigenvalues_accuracy
     tau = 2.0/(max_eigen + min_eigen)
     matrix = [[float(i==j) - tau*a_matrix[i][j] for j in range(n)] for i in range(n)]
     vector = [tau*i for i in b_vector]
@@ -70,7 +70,7 @@ def solve_system_optimal(a_matrix, b_vector):
 
 def solve_system_Seidel(a_matrix, b_vector):
     n = len(b_vector)
-    min_eigen = min(get_eigenvalues(a_matrix))
+    min_eigen = min(get_eigenvalues(a_matrix)) - eigenvalues_accuracy
     x = [0 for i in range(n)]
     iters = 0
     while vector_norm(transform(x, a_matrix, b_vector))/min_eigen > seidel_accuracy:
